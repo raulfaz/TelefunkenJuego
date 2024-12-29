@@ -1,0 +1,7 @@
+<div class="select-players-container">
+  <h2>Seleccionar Jugadores</h2>
+  <label for="numPlayers">Número de jugadores:</label>
+  <select id="numPlayers" [(ngModel)]="numPlayers" (change)="onPlayersSelected()">
+    <option *ngFor="let num of [2, 3, 4, 5, 6]" [value]="num">{{ num }}</option>
+  </select>
+</div>

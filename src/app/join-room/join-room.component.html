@@ -1,0 +1,6 @@
+<div class="join-room-container">
+  <h2>Unirse a Sala</h2>
+  <input type="text" placeholder="Código de la sala" [(ngModel)]="roomCode">
+  <app-select-avatar (avatarSelected)="onAvatarSelected($event)"></app-select-avatar>
+  <button (click)="joinRoom()">Unirse</button>
+</div>

@@ -1,0 +1,7 @@
+<div class="select-avatar-container">
+  <h2>Selecciona tu Avatar</h2>
+  <input type="file" (change)="onFileSelected($event)">
+  <div *ngIf="avatar">
+    <img [src]="avatar" alt="Avatar" class="avatar-preview">
+  </div>
+</div>

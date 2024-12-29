@@ -1,0 +1,11 @@
+<div class="create-room-container">
+  <h2>Crear Sala</h2>
+  <input type="text" placeholder="Nombre de la sala" [(ngModel)]="roomName">
+  <app-select-players (playersSelected)="onPlayersSelected($event)"></app-select-players>
+  <app-select-avatar (avatarSelected)="onAvatarSelected($event)"></app-select-avatar>
+  <button (click)="createRoom()">Crear</button>
+  <div *ngIf="roomCode">
+    <p>Código de la sala: {{ roomCode }}</p>
+    <p>Comparte este código con tus amigos para que se unan a la sala.</p>
+  </div>
+</div>
