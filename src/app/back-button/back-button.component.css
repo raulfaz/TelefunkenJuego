@@ -1,0 +1,23 @@
+.back-button-container {
+  text-align: center;
+}
+
+button {
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+

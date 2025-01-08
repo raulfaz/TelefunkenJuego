@@ -1,20 +1,67 @@
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
 .home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 20px;
-}
-
-button {
-  width: 80%;
-  padding: 15px;
-  margin: 10px 0;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4CAF50;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../../../public/home_fondo.png'); 
+  background-size: cover;
+  background-position: center;
   color: white;
-  cursor: pointer;
+  padding: 20px;
+  overflow: hidden; /* Asegura que no haya desbordamiento */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
 }
 
-button:hover {
-  background-color: #45a049;
+p {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  text-shadow: 2px 2px 4px rgba(13, 110, 228, 0.9);
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(13, 110, 228, 0.9);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.button-container button {
+  margin: 12px 0;
+  padding: 20px;
+  font-size: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Media query para teléfonos en modo vertical */
+@media (max-width: 768px) {
+  h2 {
+    margin-bottom: 350px; 
+    margin-top: 10px;
+  }
 }

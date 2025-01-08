@@ -1,1 +1,29 @@
-<p>game works!</p>
+<!-- game.component.html -->
+<div class="game-container">
+  <h1>Juego - Sala {{ roomId }}</h1>
+  <div class="players">
+    <h2>Jugadores</h2>
+    <ul>
+      <li *ngFor="let player of players"> <img [src]="player.avatar" alt="Avatar" class="avatar" /> <span>{{ player.name
+          }}</span> </li>
+    </ul>
+  </div>
+  <div class="scores">
+    <h2>Puntuaciones</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Jugador</th>
+          <th *ngFor="let round of [1, 2, 3, 4, 5, 6]">Ronda {{ round }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of players">
+          <td>{{ player.name }}</td>
+          <td *ngFor="let round of [1, 2, 3, 4, 5, 6]"> <input type="number" [(ngModel)]="scores[player.name][round]"
+              (change)="addScore(player.name, round, scores[player.name][round])" /> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
