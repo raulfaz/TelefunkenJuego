@@ -1,19 +1,60 @@
 .select-players-container {
-  text-align: center;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-label {
-  display: block;
-  margin: 10px 0;
-  font-size: 18px;
+.select-players-container h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(13, 110, 228, 0.9); /* Sombra de texto */
+  color: white;
 }
 
-select {
+.select-players-container label {
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Sombra ligera */
+}
+
+.select-players-container select {
   width: 80%;
   padding: 10px;
-  margin: 10px 0;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none; /* Elimina el borde amarillo por defecto */
+  transition: box-shadow 0.3s, border 0.3s; /* Transición para el efecto */
+}
+
+.select-players-container select:focus {
+  box-shadow: 0 0 5px rgba(13, 110, 228, 0.8); /* Efecto azul en foco */
+  border: 2px solid rgba(13, 110, 228, 0.8); /* Borde azul */
+}
+
+.select-players-container option {
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .select-players-container {
+    width: 100%;
+  }
+
+  .select-players-container h2 {
+    font-size: 1.8rem; /* Reduce el tamaño del encabezado */
+  }
+
+  .select-players-container select {
+    width: 80%; /* Más ancho en pantallas pequeñas */
+    padding: 12px; /* Incrementa el padding para facilidad de uso */
+    font-size: 1rem;
+  }
 }

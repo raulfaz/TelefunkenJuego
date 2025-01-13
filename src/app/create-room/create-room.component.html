@@ -4,7 +4,7 @@
   <app-player-name (nameChanged)="onNameChanged($event)"></app-player-name>
   <app-select-players (playersSelected)="onPlayersSelected($event)"></app-select-players>
   <app-select-avatar (avatarSelected)="onAvatarSelected($event)"></app-select-avatar>
-  <button (click)="createRoom()">Crear</button>
+  <button (click)="createRoom()" class="button-create">Crear</button>
   <div *ngIf="roomCode">
     <p>{{ roomCode }}</p>
   </div>

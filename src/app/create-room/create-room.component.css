@@ -1,29 +1,108 @@
+
 .create-room-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 20px;
-}
-
-input, select {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  width: 80%;
-  padding: 15px;
-  margin: 10px 0;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4CAF50;
+  height: 100%;
+  width: 100vw;
+  background-image: url('../../../public/fondo_Create_Join_Room.png'); 
+  background-size: cover; 
+  background-position: center; 
   color: white;
-  cursor: pointer;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-button:hover {
-  background-color: #45a049;
+.create-room-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(228, 13, 49, 0.9);
+}
+
+.create-room-container input {
+  width: 60%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(177, 176, 176, 0.1);
+  background-color: rgba(0, 0, 0, 0.5); 
+  color: white;
+  outline: none; 
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+.create-room-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.create-room-container input:focus {
+  box-shadow: 0 0 5px rgba(13, 110, 228, 0.8); 
+  border: 2px solid rgba(13, 110, 228, 0.8); 
+}
+
+.create-room-container button {
+  margin: 12px 0;
+  padding: 15px;
+  font-size: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.6); 
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-room-container button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.create-room-container p {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  text-shadow: 2px 2px 4px rgba(13, 110, 228, 0.9);
+}
+
+.create-room-container .button-create {
+  width: 80%;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.8); 
+  border-radius: 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-room-container .button-create:hover {
+  background-color: rgba(0, 0, 0, 1); 
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .create-room-container {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .create-room-container h2 {
+    font-size: 2rem;
+  }
+
+  .create-room-container input {
+    font-size: 1rem;
+    width: 67%; 
+    padding: 12px;
+  }
+
+  .create-room-container button {
+    font-size: 1rem;
+    margin-top: 60px;
+  }
+
+  .create-room-container .button-create {
+    width: 70%; 
+    font-size: 1.1rem;
+  }
 }

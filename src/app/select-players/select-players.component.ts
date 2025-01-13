@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./select-players.component.css']
 })
 export class SelectPlayersComponent {
-  numPlayers: number = 1;
+  numPlayers: number = 2;
 
   @Output() playersSelected = new EventEmitter<number>();
 
