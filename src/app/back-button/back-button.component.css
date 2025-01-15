@@ -8,6 +8,7 @@
 
 .back-button-container button {
   width: 50%;
+  margin: 12px 0;
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: bold;
@@ -16,9 +17,7 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); 
-  transition: background-color 0.3s, box-shadow 0.3s; 
+  transition: background-color 0.3s ease; 
 }
 
 .back-button-container button:hover {
@@ -40,6 +39,6 @@
   .back-button-container button {
     width: 63%;
     font-size: 1rem; 
-    padding: 19px; 
+    padding: 18px; 
   }
 }

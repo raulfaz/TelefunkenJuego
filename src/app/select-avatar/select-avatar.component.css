@@ -50,9 +50,9 @@
   }
 
   .select-avatar-container input[type="file"] {
-    padding: 15px; 
+    padding: 18px; 
     font-size: 0.9rem; 
-    width: 67%; 
+    width: 63%; 
   }
 
   .avatar-preview {

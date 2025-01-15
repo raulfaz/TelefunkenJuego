@@ -1,29 +1,89 @@
 .join-room-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 20px;
-}
-
-input {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  width: 80%;
-  padding: 15px;
-  margin: 10px 0;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4CAF50;
+  height: 100%;
+  width: 100vw;
+  background-image: url('../../../public/fondo_Create_Join_Room.png'); 
+  background-size: cover;
+  background-position: center;
   color: white;
-  cursor: pointer;
+  padding: 20px;
+  box-sizing: border-box; 
 }
 
-button:hover {
-  background-color: #45a049;
+.join-room-container h2 {
+  font-size: 2.5rem;
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(13, 110, 228, 0.9); 
+}
+
+.join-room-container input {
+  width: 60%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.6); 
+  color: white;
+  outline: none; 
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+.join-room-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.join-room-container input:focus {
+  box-shadow: 0 0 5px rgba(13, 110, 228, 0.8); 
+  border: 2px solid rgba(13, 110, 228, 0.8); 
+}
+
+.join-room-container .button-join {
+  width: 50%;
+  margin: 30px 0px 0;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.8); 
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.create-room-container .button-join:hover {
+  background-color: rgba(0, 0, 0, 1); 
+}
+
+.join-room-container button:active {
+  background-color: rgba(13, 110, 228, 0.9); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+@media (max-width: 768px) {
+  .join-room-container {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .join-room-container h2 {
+    font-size: 2rem;
+  }
+
+  .join-room-container input {
+    width: 63%; 
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .join-room-container .button-join {
+    width: 70%; 
+    font-size: 1rem;
+    padding: 18px;
+  }
 }

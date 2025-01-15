@@ -43,22 +43,6 @@
   border: 2px solid rgba(13, 110, 228, 0.8); 
 }
 
-.create-room-container button {
-  margin: 12px 0;
-  padding: 15px;
-  font-size: 1.2rem;
-  background-color: rgba(0, 0, 0, 0.6); 
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.create-room-container button:hover {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
 .create-room-container p {
   font-size: 1.5rem;
   margin-top: 20px;
@@ -67,16 +51,25 @@
 
 .create-room-container .button-create {
   width: 80%;
+  margin: 12px 0;
   padding: 16px;
   background-color: rgba(0, 0, 0, 0.8); 
+  color: white;
+  font-weight: bold;
   border-radius: 10px;
   font-size: 1.3rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  border: none;
 }
 
 .create-room-container .button-create:hover {
   background-color: rgba(0, 0, 0, 1); 
+}
+
+.join-room-container button:active {
+  background-color: rgba(13, 110, 228, 0.9); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 /* Media query para pantallas pequeñas */
@@ -92,7 +85,7 @@
 
   .create-room-container input {
     font-size: 1rem;
-    width: 67%; 
+    width: 64%; 
     padding: 12px;
   }
 
@@ -103,6 +96,7 @@
 
   .create-room-container .button-create {
     width: 70%; 
-    font-size: 1.1rem;
+    font-size: 1rem;
+    padding: 18px;
   }
 }
