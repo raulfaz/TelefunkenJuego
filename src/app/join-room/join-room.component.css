@@ -68,7 +68,8 @@
 @media (max-width: 768px) {
   .join-room-container {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+    padding: 120px 0;
   }
 
   .join-room-container h2 {
@@ -82,7 +83,7 @@
   }
 
   .join-room-container .button-join {
-    width: 70%; 
+    width: 63%; 
     font-size: 1rem;
     padding: 18px;
   }

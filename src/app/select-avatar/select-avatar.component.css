@@ -56,7 +56,9 @@
   }
 
   .avatar-preview {
-    max-width: 120px; 
-    max-height: 120px;
+    border-radius: 50%;
+    max-width: 90px; 
+    max-height: 90px;
+    object-fit: cover;
   }
 }

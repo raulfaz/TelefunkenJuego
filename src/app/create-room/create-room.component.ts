@@ -37,6 +37,7 @@ export class CreateRoomComponent {
     this.avatar = avatar;
   }
 
+  
   createRoom() {
     this.roomService.createRoom({
       roomName: this.roomName,
@@ -44,9 +45,9 @@ export class CreateRoomComponent {
       creatorAvatar: this.avatar,
       playerName: this.playerName,
     }).subscribe(({ roomId }) => {
-      this.roomCode = roomId; 
-     // this.roomService.joinRoom(roomId, this.playerName, this.avatar);
-      this.router.navigate(['/game'], { queryParams: { roomId } });
+      this.roomCode = roomId;
+      this.router.navigate(['/game'], { queryParams: { roomId, playerName: this.playerName, avatar: this.avatar, isCreator: true } });
     });
   }
+  
 }

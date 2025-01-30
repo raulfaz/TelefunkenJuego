@@ -1,39 +1,62 @@
 .game-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .players {
-    margin-bottom: 20px;
-  }
-  
-  .players ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .players li {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-  }
-  
-  .players .avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .scores table {
-    margin: 0 auto;
-    border-collapse: collapse;
-    width: 80%;
-  }
-  
-  .scores th, .scores td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-  }
-  
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: #fff;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #ffcc00;
+  object-fit: cover;
+  margin: 10px;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+  border: 2px solid #ffcc00;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #ffcc00;
+  color: #222;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #e6b800;
+}
+
+canvas {
+  display: block;
+  max-width: 100%;
+  margin-top: 20px;
+}

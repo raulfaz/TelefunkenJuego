@@ -30,20 +30,19 @@ export class JoinRoomComponent {
     this.avatar = avatar;
   }
 
-  
   joinRoom() {
     this.roomService.joinRoom(this.roomCode, this.playerName, this.avatar);
     this.roomService.onRoomJoined(({ success, room, message }) => {
       if (success) {
         this.players = room.players;
-        this.router.navigate(['/game'], { queryParams: { roomId: this.roomCode } });
+        this.router.navigate(['/game'], { queryParams: { roomId: this.roomCode, playerName: this.playerName, avatar: this.avatar, isCreator: false } });
       } else {
         alert(message);
       }
     });
-
     this.roomService.onPlayersUpdate((players) => {
       this.players = players;
     });
   }
+  
 }

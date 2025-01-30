@@ -2,5 +2,6 @@
 export interface Player {
     name: string;
     avatar: string | ArrayBuffer | null;
+    score?: number;
   }
   

@@ -75,8 +75,9 @@
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
   .create-room-container {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
+    padding-bottom: 50px;
   }
 
   .create-room-container h2 {
