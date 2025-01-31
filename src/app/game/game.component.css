@@ -143,3 +143,197 @@ button:disabled {
 .total-score {
   font-weight: bold;
 }
+
+/* Main container styles */
+.game-container {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header styles */
+.game-header {
+  background: linear-gradient(45deg, #ff3366, #ff0000);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(255, 51, 102, 0.2);
+}
+
+.room-title {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.stage-title {
+  font-size: 1.25rem;
+  margin: 0.5rem 0 0;
+  opacity: 0.9;
+}
+
+/* Player section styles */
+.player-section {
+  background-color: #2a2a2a;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.player-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.player-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #ff3366;
+}
+
+/* Score input styles */
+.score-input {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.score-field {
+  background-color: #2a2a2a;
+  border: 2px solid #ff3366;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.submit-btn {
+  background: linear-gradient(45deg, #ff3366, #ff0000);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Scoreboard styles */
+.scoreboard-container {
+  background-color: #2a2a2a;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.scoreboard-title {
+  color: #ff3366;
+  margin-bottom: 1.5rem;
+}
+
+.scoreboard {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.scoreboard th {
+  background-color: #333;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.scoreboard td {
+  padding: 1rem;
+  border-top: 1px solid #404040;
+}
+
+.player-cell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.player-small-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.total-score {
+  font-weight: 600;
+  color: #ff3366;
+}
+
+/* Game controls */
+.game-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.next-btn, .end-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.next-btn {
+  background: linear-gradient(45deg, #ff3366, #ff0000);
+  color: white;
+  border: none;
+}
+
+.end-btn {
+  background-color: transparent;
+  border: 2px solid #ff3366;
+  color: #ff3366;
+}
+
+.next-btn:hover, .end-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 51, 102, 0.2);
+}
+
+.next-btn:disabled {
+  background: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .game-container {
+    padding: 1rem;
+  }
+  
+  .player-card {
+    flex-direction: column;
+    text-align: center;
+    color: #1a1a1a;
+  }
+  
+  .score-input {
+    flex-direction: column;
+  }
+  
+  .game-controls {
+    flex-direction: column;
+  }
+}

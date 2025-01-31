@@ -5,6 +5,7 @@ import { Player } from '../models/player.model';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ScoreService } from '../services/score.service';
 
 @Component({
   selector: 'app-game',
@@ -30,7 +31,8 @@ export class GameComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private roomService: RoomService
+    private roomService: RoomService,
+    private scoreService: ScoreService
   ) {}
 
   ngOnInit(): void {
@@ -73,6 +75,16 @@ export class GameComponent implements OnInit, OnDestroy {
         this.currentStageIndex
       );
       this.displayPointsInput = false;
+
+      // Guardar los puntajes en MongoDB Atlas
+      this.scoreService.saveScores(this.roomId, this.scores).subscribe(
+        (response) => {
+          console.log('Scores guardados exitosamente:', response);
+        },
+        (error) => {
+          console.error('Error al guardar los puntajes:', error);
+        }
+      );
     }
   }
 
