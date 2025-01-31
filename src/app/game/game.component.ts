@@ -1,31 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { RoomService } from '../services/room.service';
 import { Player } from '../models/player.model';
+import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-game',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  styleUrls: ['./game.component.css'],
+  standalone: true,
+  imports: [CommonModule, FormsModule]
 })
-export class GameComponent implements OnInit {
-  roomId: string | null = null;
-  playerName: string | null = null;
+export class GameComponent implements OnInit, OnDestroy {
+  roomId: string = '';
+  playerName: string = '';
   avatar: string | null = null;
   players: Player[] = [];
   gameStage: string = '1/3';
-  score?: number;
+  currentScore: number = 0;
   isCreator: boolean = false;
   displayPointsInput: boolean = true;
-  totalScores: { [key: string]: number } = {}; // Acumulador de puntos
-
+  currentStageIndex: number = 0;
   gameStages: string[] = ['1/3', '2/3', '1/4', '2/4', '1/5', '2/5', 'Escalera'];
+  
+  private scoresSubscription?: Subscription;
+  scores: {[key: string]: { history: number[], total: number }} = {};
 
-  constructor(private route: ActivatedRoute, private router: Router, private roomService: RoomService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private roomService: RoomService
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -35,61 +41,69 @@ export class GameComponent implements OnInit {
       this.isCreator = params['isCreator'] === 'true';
     });
 
+    // Suscribirse a las actualizaciones de jugadores
     this.roomService.onPlayersUpdate(players => {
       this.players = players;
+      console.log('Players updated:', players);
     });
 
-    this.roomService.onRoomJoined(data => {
-      if (data.success) {
-        this.displayPointsInput = true;
-      }
+    // Suscribirse a las actualizaciones de puntajes
+    this.scoresSubscription = this.roomService.scores$.subscribe(scores => {
+      this.scores = scores;
+      console.log('Scores updated:', scores);
     });
-
-    this.roomService.onShowPointsInput(() => {
-      console.log("Evento show-points-input recibido");
-      this.displayPointsInput = true;
-    });
-    
 
     this.roomService.onChangeGame(() => {
       this.nextStage();
     });
-
-    this.roomService.onShowBarChart(() => {
-      this.endGame();
-    });
   }
 
-  submitScore() {
-    if (this.playerName && this.score !== undefined) {
-      // Sumar puntajes acumulados
-      this.totalScores[this.playerName] = (this.totalScores[this.playerName] || 0) + this.score;
+  ngOnDestroy(): void {
+    if (this.scoresSubscription) {
+      this.scoresSubscription.unsubscribe();
     }
-    
-    this.players = this.players.map(player => {
-      if (player.name === this.playerName) {
-        player.score = this.totalScores[this.playerName];
-      }
-      return player;
-    });
-    
-    this.roomService.updatePlayers(this.players);
   }
 
-  nextStage() {
-    const currentIndex = this.gameStages.indexOf(this.gameStage);
-    if (currentIndex < this.gameStages.length - 1) {
-      this.gameStage = this.gameStages[currentIndex + 1];
-      if (this.isCreator && this.roomId) {
+  submitScore(): void {
+    if (this.playerName && this.currentScore !== undefined) {
+      this.roomService.updateScore(
+        this.roomId,
+        this.playerName,
+        this.currentScore,
+        this.currentStageIndex
+      );
+      this.displayPointsInput = false;
+    }
+  }
+
+  getPlayerScoreHistory(playerName: string): number[] {
+    return this.scores[playerName]?.history || Array(this.currentStageIndex + 1).fill(0);
+  }
+
+  getPlayerTotal(playerName: string): number {
+    return this.scores[playerName]?.total || 0;
+  }
+
+  allPlayersSubmitted(): boolean {
+    return this.players.every(player => 
+      this.scores[player.name]?.history[this.currentStageIndex] !== undefined
+    );
+  }
+
+  nextStage(): void {
+    if (this.currentStageIndex < this.gameStages.length - 1) {
+      this.currentStageIndex++;
+      this.gameStage = this.gameStages[this.currentStageIndex];
+      this.displayPointsInput = true;
+      
+      if (this.isCreator) {
         this.roomService.nextGame(this.roomId);
       }
-    } else {
-      this.endGame();
     }
   }
 
-  endGame() {
-    if (this.isCreator && this.roomId) {
+  endGame(): void {
+    if (this.isCreator) {
       this.roomService.endGame(this.roomId);
     }
   }

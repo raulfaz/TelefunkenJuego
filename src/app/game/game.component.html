@@ -1,19 +1,55 @@
 <div class="game-container">
-  <h2>Sala: {{ roomId }}</h2>
-  
-  <div *ngIf="playerName && avatar">
-    <p>{{ playerName }}</p>
-    <img [src]="avatar" alt="Avatar">
-    <p>{{ gameStage }}</p>
+  <div class="game-header">
+    <h2 class="room-title">Sala: {{ roomId }}</h2>
+    <h3 class="stage-title">Etapa actual: {{ gameStage }}</h3>
   </div>
-  
-  <div *ngIf="displayPointsInput">
-    <input type="number" [(ngModel)]="score" placeholder="Puntaje">
-    <button (click)="submitScore()">Enviar Puntaje</button>
+
+  <div class="player-section" *ngIf="playerName && avatar">
+    <div class="player-card">
+      <img [src]="avatar" alt="Avatar" class="player-avatar">
+      <h3>{{ playerName }}</h3>
+      <p class="score">Tu puntuación total: {{ getPlayerTotal(playerName) }}</p>
+    </div>
   </div>
-  
-  <div *ngIf="isCreator">
-    <button (click)="nextStage()">Continuar al siguiente juego</button>
-    <button (click)="endGame()">Finalizar Juego</button>
+
+  <div class="score-input" *ngIf="displayPointsInput">
+    <input type="number" [(ngModel)]="currentScore" placeholder="Ingresa tu puntaje" class="score-field">
+    <button (click)="submitScore()" class="submit-btn">Enviar Puntaje</button>
+  </div>
+
+  <div class="scoreboard-container">
+    <h3 class="scoreboard-title">Tabla de Puntuaciones</h3>
+    <div class="scoreboard-wrapper">
+      <table class="scoreboard">
+        <thead>
+          <tr>
+            <th>Jugador</th>
+            <th *ngFor="let stage of gameStages.slice(0, currentStageIndex + 1)">{{ stage }}</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let player of players">
+            <td class="player-cell">
+              <img [src]="player.avatar" alt="Avatar" class="player-small-avatar">
+              <span>{{ player.name }}</span>
+            </td>
+            <td *ngFor="let score of getPlayerScoreHistory(player.name)">
+              {{ score || '0' }}
+            </td>
+            <td class="total-score">{{ getPlayerTotal(player.name) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="game-controls" *ngIf="isCreator">
+    <button (click)="nextStage()" 
+            [disabled]="displayPointsInput || !allPlayersSubmitted()"
+            class="next-btn">
+      Continuar al siguiente juego
+    </button>
+    <button (click)="endGame()" class="end-btn">Finalizar Juego</button>
   </div>
 </div>
