@@ -10,7 +10,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class RoomService {
   private socket: Socket;
-  private apiUrl = 'https://telefunkenpointsregistrybackend.onrender.com'; // URL del backend
+  private apiUrl = 'https://telefunkenpointsregistrybackend.onrender.com/'; // URL del backend
   private scoresSubject = new BehaviorSubject<{[key: string]: any}>({});
   public scores$ = this.scoresSubject.asObservable();
 
