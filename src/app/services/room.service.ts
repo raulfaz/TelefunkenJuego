@@ -26,7 +26,7 @@ export class RoomService {
 
   // Mantener los métodos existentes
   createRoom(roomData: any): Observable<{ roomId: string }> {
-    return this.http.post<{ roomId: string }>(`${this.apiUrl}/api/rooms/create-room`, roomData);
+    return this.http.post<{ roomId: string }>(`${this.apiUrl}api/rooms/create-room`, roomData);
   }
 
   joinRoom(roomId: string, playerName: string, avatar: string | ArrayBuffer | null): void {
