@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ScoreService {
-  private apiUrl = 'http://localhost:3000/api/scores'; // URL de tu API
+  private apiUrl = 'https://telefunkenpointsregistrybackend.onrender.com/api/scores'; // URL de tu API
 
   constructor(private http: HttpClient) {}
 
